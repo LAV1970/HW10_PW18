@@ -59,7 +59,9 @@ ROOT_URLCONF = "quotes_project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "quotes_project"],  # Замените на ваш путь
+        "DIRS": [
+            BASE_DIR / "quotes_project/quotes/templates"
+        ],  # Укажите полный путь к папке с шаблонами
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
