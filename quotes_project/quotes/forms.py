@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.forms import YourRegisterForm
 from django.contrib.auth import login
-from .forms import YourRegisterForm  # Update import to use YourRegisterForm
 
 
 def register(request):
@@ -9,7 +9,9 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("your-redirect-url")
+            return redirect(
+                "your-redirect-url"
+            )  # Укажите URL для перенаправления после успешной регистрации
     else:
         form = YourRegisterForm()
     return render(request, "registration/register.html", {"form": form})
