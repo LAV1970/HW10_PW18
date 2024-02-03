@@ -25,7 +25,7 @@ urlpatterns = [
     path("quotes/", include("quotes.urls")),
     path("accounts/login/", auth_views.LoginView.as_view(), name="login"),
     path("accounts/logout/", auth_views.LogoutView.as_view(), name="logout"),
-    path("signup/", SignUpView.as_view(), name="signup"),
+    path("registration/", SignUpView.as_view(), name="signup"),
     path("accounts/", include("allauth.urls")),
     # Добавьте следующую строку для обработки корневого URL
     path("", include("quotes.urls")),  # Замените "quotes.urls" на ваш реальный путь
