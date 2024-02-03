@@ -17,7 +17,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import views as auth_views
+from django.contrib.auth import (
+    views as auth_views,
+)  # Убедитесь, что этот импорт присутствует
+
 from quotes.views import SignUpView
 
 urlpatterns = [
