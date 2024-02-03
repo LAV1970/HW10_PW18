@@ -3,4 +3,5 @@ from .views import quote_list
 
 urlpatterns = [
     path("", quote_list, name="quote_list"),
+    # Другие URL-шаблоны, если они есть
 ]

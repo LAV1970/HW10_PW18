@@ -17,10 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import (
-    views as auth_views,
-)  # Убедитесь, что этот импорт присутствует
-
+from django.contrib.auth import views as auth_views
 from quotes.views import SignUpView
 
 urlpatterns = [
@@ -30,4 +27,6 @@ urlpatterns = [
     path("accounts/logout/", auth_views.LogoutView.as_view(), name="logout"),
     path("signup/", SignUpView.as_view(), name="signup"),
     path("accounts/", include("allauth.urls")),
+    # Добавьте следующую строку для обработки корневого URL
+    path("", include("quotes.urls")),  # Замените "quotes.urls" на ваш реальный путь
 ]
