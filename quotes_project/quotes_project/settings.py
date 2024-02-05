@@ -60,7 +60,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            BASE_DIR / "quotes_project/quotes/templates"
+            BASE_DIR / "quotes_project/quotes/templates/registation"
         ],  # Укажите полный путь к папке с шаблонами
         "APP_DIRS": True,
         "OPTIONS": {
