@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Site{% endblock %}</title>
+    <!-- Вставьте здесь ваши общие стили, скрипты или метатеги -->
+</head>
+<body>
+    <header>
+        <!-- Здесь может быть шапка сайта -->
+        <h1>{% block header %}Welcome to My Site{% endblock %}</h1>
+    </header>
+
+    <nav>
+        <!-- Здесь может быть навигационное меню -->
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <!-- Добавьте другие пункты меню по мере необходимости -->
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Здесь будет вставляться содержимое конкретных страниц -->
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <!-- Здесь может быть подвал сайта -->
+        <p>&copy; 2024 My Site. All rights reserved.</p>
+    </footer>
+
+    <!-- Вставьте здесь ваши общие скрипты или элементы перед закрывающим тегом </body> -->
+</body>
+</html>
