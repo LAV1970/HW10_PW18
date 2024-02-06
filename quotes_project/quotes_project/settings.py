@@ -60,7 +60,7 @@ ROOT_URLCONF = "quotes_project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "quotes", "templates")],
+        "DIRS": [os.path.join(BASE_DIR, "quotes", "templates", "registration")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
