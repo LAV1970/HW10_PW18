@@ -1,0 +1,119 @@
+/* 
+На этой странице содержится файл Sample.css, в котором представлена информация для настройки стилей на странице входа в систему центра
+служб идентификации.  
+Вы должны создать новый файл Custom.css в каталоге .../itim/custom/ui/css. 
+Для пробы импортируйте файл Sample.css в файл Custom.css, который вы создали, чтобы увидеть результат применения настроенных стилей на странице входа
+в систему центра служб идентификации.
+*/
+
+.oneui .loginForm .page {
+    max-height: auto;
+}
+
+/*
+Чтобы изменить размер логотипа продукта, измените показанный ниже класс:
+*/
+.page .product_logo {
+    height: 40px;
+    width: 120px;
+}
+
+/*
+Чтобы изменить свойства названия заголовка, измените показанный ниже класс:
+*/
+.loginColumn .headertTitle {
+    font-size: 1.67em;
+    font-weight: normal;
+    color: #222222;
+    margin-bottom: 10px;
+}
+
+/*
+Чтобы изменить свойства поля языка, измените показанный ниже класс:
+*/
+.languageField {
+    padding: 10px 0px !important;
+    float: right;
+
+}
+
+.dj_ie9 .languageField {
+    margin: 50px !important;
+}
+
+.dijitRtl .languageField {
+    float: left;
+}
+
+/*
+Чтобы изменить свойства формы Вход в систему, измените показанный ниже класс:
+*/
+.oneui .loginForm {
+    text-align: center;
+    background: #A9A9F5;
+    background: -moz-linear-gradient(center top, #e8e8e8 0%, #b9b9b9 100%);
+    background: -webkit-linear-gradient(top, #e8e8e8 0%, #b9b9b9 100%);
+    background: -ms-linear-gradient(top, #e8e8e8 0%, #b9b9b9 100%);
+    background: linear-gradient(to bottom, #e8e8e8 0%, #b9b9b9 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e8e8', endColorstr='#b9b9b9', GradientType=0);
+    box-shadow: 2px 0px 4px #000 inset;
+}
+
+/*
+Чтобы изменить свойства страницы Вход в систему, измените показанный ниже класс:
+*/
+.loginForm .page {
+    display: inline-block;
+    text-align: left;
+    margin: auto;
+    padding: 20px;
+    /* max-height: 48em; */
+    border: medium solid #999999;
+    background: #CEECF5;
+}
+
+/*
+Чтобы изменить свойства кнопки Вход в систему, измените показанный ниже класс:
+*/
+.oneui .loginBtn .idxSpecialButton .dijitButtonNode {
+    background-color: greenyellow;
+    background-image: -moz-linear-gradient(top, green, red);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#008abf), to(#085884));
+    background-image: -webkit-linear-gradient(top, red 0%, #085884 100%);
+    background-image: -o-linear-gradient(top, #008abf 0%, #085884 100%);
+    background-image: -ms-linear-gradient(top, #008abf 0%, #085884 100%);
+    background-image: linear-gradient(top, #008abf 0%, #085884 100%);
+    border: 1px solid #0a5f8e;
+    color: #ffffff;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.35);
+}
+
+.dijitRtl .page {
+    text-align: right;
+}
+
+.mainLogin {
+    margin-top: 0px;
+    white-space: nowrap;
+}
+
+.loginColumn {
+    display: inline-block;
+    padding-right: 8px;
+    min-width: 0px;
+}
+
+.dijitRtl .loginColumn {
+    display: inline-block;
+    padding-left: 8px;
+    padding-right: 0px;
+}
+
+/*
+Чтобы изменить свойства нижнего колонтитула страницы Вход в систему, измените показанный ниже класс:
+*/
+.loginForm .footer .footerText {
+    display: inline-block;
+    width: 100%;
+    word-wrap: break-word;
+}
