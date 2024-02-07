@@ -33,6 +33,7 @@ def register(request):
 
 
 class AuthorForm(forms.ModelForm):
+
     class Meta:
         model = Author
-        fields = ["name"]
+        fields = ["name", "age", "book"]

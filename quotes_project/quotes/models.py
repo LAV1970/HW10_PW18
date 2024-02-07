@@ -15,6 +15,8 @@ class Quote(models.Model):
 
 class Author(models.Model):
     name = models.CharField(max_length=255)
+    age = models.IntegerField()
+    book = models.CharField(max_length=255, default="")
 
     def __str__(self):
         return self.name
