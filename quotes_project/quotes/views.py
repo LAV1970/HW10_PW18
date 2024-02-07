@@ -59,3 +59,12 @@ def add_author(request):
     else:
         form = AuthorForm()
     return render(request, "add_author.html", {"form": form})
+
+
+def author_list(request):
+    # Получаем все объекты Author из базы данных
+    authors = Author.objects.all()
+
+    # Передаем список авторов в контекст шаблона
+    context = {"authors": authors}
+    return render(request, "author_list.html", {})

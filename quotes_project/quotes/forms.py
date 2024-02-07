@@ -4,6 +4,7 @@ from django.contrib.auth import login
 from django import forms
 from django.contrib.auth.models import User
 from django.db import models
+from .models import Author
 
 
 class YourRegisterForm(UserCreationForm):
@@ -31,8 +32,7 @@ def register(request):
     return render(request, "registration/register.html", {"form": form})
 
 
-class AuthorForm(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
+class AuthorForm(forms.ModelForm):
+    class Meta:
+        model = Author
+        fields = ["name"]
