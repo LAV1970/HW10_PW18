@@ -6,7 +6,9 @@ from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from .models import Quote
+from .forms import AuthorForm
 
 
 def quote_list(request):
@@ -43,3 +45,19 @@ def signup(request):
 
 def home(request):
     return render(request, "home.html")
+
+
+@login_required
+def add_author(request):
+    if request.method == "POST":
+        form = AuthorForm(request.POST)
+        if form.is_valid():
+            author = form.save(commit=False)
+            author.user = request.user
+            author.save()
+            return redirect(
+                "author_list"
+            )  # Предположим, что у вас есть представление для вывода списка авторов
+    else:
+        form = AuthorForm()
+    return render(request, "add_author.html", {"form": form})
