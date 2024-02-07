@@ -1,14 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
-from django.contrib.auth import login
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
-from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import Quote
-from .forms import AuthorForm
+from .models import Quote, Author
+from .forms import YourRegisterForm, AuthorForm
 
 
 def quote_list(request):
