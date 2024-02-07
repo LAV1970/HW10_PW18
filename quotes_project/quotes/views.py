@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Quote, Author
-from .forms import YourRegisterForm, AuthorForm
+from .forms import YourRegisterForm, AuthorForm, QuoteForm
 
 
 def quote_list(request):
@@ -68,3 +68,19 @@ def author_list(request):
     # Передаем список авторов в контекст шаблона
     context = {"authors": authors}
     return render(request, "author_list.html", {})
+
+
+def add_quote(request):
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            form = QuoteForm(request.POST)
+            if form.is_valid():
+                quote = form.save(commit=False)
+                quote.user = request.user
+                quote.save()
+                return redirect("quote_list")
+        else:
+            form = QuoteForm()
+        return render(request, "quotes/add_quote.html", {"form": form})
+    else:
+        return redirect("login")

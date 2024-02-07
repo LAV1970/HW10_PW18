@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django import forms
 from django.contrib.auth.models import User
 from django.db import models
-from .models import Author
+from .models import Author, Quote
 
 
 class YourRegisterForm(UserCreationForm):
@@ -37,3 +37,9 @@ class AuthorForm(forms.ModelForm):
     class Meta:
         model = Author
         fields = ["name", "age", "book"]
+
+
+class QuoteForm(forms.ModelForm):
+    class Meta:
+        model = Quote
+        fields = ["text", "author", "tags"]
