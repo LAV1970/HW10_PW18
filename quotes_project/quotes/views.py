@@ -11,7 +11,7 @@ from .forms import YourRegisterForm, AuthorForm
 
 def quote_list(request):
     quotes = Quote.objects.all()
-    return render(request, "quotes/quote_list.html", {"quotes": quotes})
+    return render(request, "registration/register.html")
 
 
 class SignUpView(CreateView):
