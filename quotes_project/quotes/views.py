@@ -84,3 +84,8 @@ def add_quote(request):
         return render(request, "quotes/add_quote.html", {"form": form})
     else:
         return redirect("login")
+
+
+def about(request):
+    form = QuoteForm()  # Определите переменную формы
+    return render(request, "quotes/add_quote.html", {"form": form})
