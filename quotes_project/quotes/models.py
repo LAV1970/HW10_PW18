@@ -28,7 +28,7 @@ class Quote(models.Model):
     author = models.CharField(max_length=255)
     content = models.TextField(default="")
     tags = models.ManyToManyField(Tag)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.text
