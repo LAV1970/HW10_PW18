@@ -5,8 +5,8 @@ from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Quote, Author
-from .forms import YourRegisterForm, AuthorForm, QuoteForm
+from .models import Quote, Author, Tag
+from .forms import YourRegisterForm, AuthorForm, QuoteForm, TagSearchForm
 
 
 @login_required
@@ -95,3 +95,17 @@ def about(request):
 def author_detail(request, author_id):
     author = get_object_or_404(Author, id=author_id)
     return render(request, "author_detail.html", {"author": author})
+
+
+def quotes_by_tag(request):
+    if request.method == "POST":
+        form = TagSearchForm(request.POST)
+        if form.is_valid():
+            tag_name = form.cleaned_data["tag_name"]
+            tag = Tag.objects.get(name=tag_name)
+            quotes = Quote.objects.filter(tags=tag)
+    else:
+        form = TagSearchForm()
+        quotes = Quote.objects.all()
+
+    return render(request, "quotes_by_tag.html", {"form": form, "quotes": quotes})

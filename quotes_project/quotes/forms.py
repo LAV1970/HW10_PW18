@@ -43,3 +43,7 @@ class QuoteForm(forms.ModelForm):
     class Meta:
         model = Quote
         fields = ["text", "author", "tags"]
+
+
+class TagSearchForm(forms.Form):
+    tag_name = forms.CharField(max_length=50)

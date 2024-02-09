@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Quotes by Tag</h2>
+
+    <form method="post" action="{% url 'quotes_by_tag' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+
+    {% if quotes %}
+        <ul>
+            {% for quote in quotes %}
+                <li>{{ quote.content }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No quotes found.</p>
+    {% endif %}
+{% endblock %}

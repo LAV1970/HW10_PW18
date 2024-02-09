@@ -9,6 +9,7 @@ from .views import (
     add_quote,
     about,
     author_detail,
+    quotes_by_tag,
 )
 from django.contrib.auth import views as auth_views
 
@@ -26,4 +27,5 @@ urlpatterns = [
     path("add_quote/", add_quote, name="add_quote"),
     path("about/", about, name="about"),
     path("author/<int:author_id>/", author_detail, name="author_detail"),
+    path("quotes_by_tag/", quotes_by_tag, name="quotes_by_tag"),
 ]
