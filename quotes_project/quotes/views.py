@@ -9,6 +9,11 @@ from .models import Quote, Author, Tag
 from .forms import YourRegisterForm, AuthorForm, QuoteForm, TagSearchForm
 
 
+def top_tags(request):
+    top_tags = Tag.objects.order_by("-popularity")[:10]
+    return render(request, "top_tags.html", {"top_tags": top_tags})
+
+
 @login_required
 def quote_list(request):
     quotes = Quote.objects.all()

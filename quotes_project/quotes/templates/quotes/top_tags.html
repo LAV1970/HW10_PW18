@@ -1,0 +1,7 @@
+<!-- top_tags.html -->
+<h3>Top Ten tags</h3>
+<ul>
+    {% for tag in top_tags %}
+        <li>{{ tag.name }} ({{ tag.popularity }})</li>
+    {% endfor %}
+</ul>
