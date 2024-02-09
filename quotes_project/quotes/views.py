@@ -9,9 +9,10 @@ from .models import Quote, Author
 from .forms import YourRegisterForm, AuthorForm, QuoteForm
 
 
+@login_required
 def quote_list(request):
     quotes = Quote.objects.all()
-    return render(request, "registration/register.html")
+    return render(request, "registration/register.html", {"quotes": quotes})
 
 
 class SignUpView(CreateView):
