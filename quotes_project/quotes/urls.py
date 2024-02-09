@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib.auth.decorators import login_required
 from .views import (
     quote_list,
     SignUpView,
@@ -7,10 +8,12 @@ from .views import (
     add_author,
     add_quote,
     about,
+    author_detail,
 )
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    path("", quote_list, name="quote_list"),
     path("", quote_list, name="quote_list"),
     path("login/", auth_views.LoginView.as_view(), name="login"),
     path(
@@ -22,4 +25,5 @@ urlpatterns = [
     path("author_list/", author_list, name="author_list"),
     path("add_quote/", add_quote, name="add_quote"),
     path("about/", about, name="about"),
+    path("author/<int:author_id>/", author_detail, name="author_detail"),
 ]

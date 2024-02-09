@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from django.views.generic.edit import CreateView
@@ -89,3 +89,8 @@ def add_quote(request):
 def about(request):
     form = QuoteForm()  # Определите переменную формы
     return render(request, "quotes/add_quote.html", {"form": form})
+
+
+def author_detail(request, author_id):
+    author = get_object_or_404(Author, id=author_id)
+    return render(request, "author_detail.html", {"author": author})
