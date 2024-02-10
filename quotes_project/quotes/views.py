@@ -118,8 +118,8 @@ def quotes_by_tag(request):
 
 
 def home(request):
-    # Получение всех цитат
-    all_quotes = Quote.objects.all()
+    # Получение всех цитат и сортировка по полю "id"
+    all_quotes = Quote.objects.order_by("id")
 
     # Количество цитат на одной странице
     quotes_per_page = 10

@@ -5,7 +5,6 @@
 {% block content %}
 <h2>Welcome, {{ user.username }}!</h2>
 <p>This is your personalized home page.</p>
-
 <div class="top-tags">
     <h2>Top Ten Tags</h2>
     <ul>
@@ -15,11 +14,13 @@
         <!-- Добавьте остальных авторов по аналогии -->
     </ul>
 </div>
-
 <div class="quotes">
-    {% for quote in current_page.object_list %}
-    <p>{{ quote.text }} - {{ quote.author.name }}</p>
-    {% endfor %}
+    <p>Current Page: {{ current_page.number }}</p>
+    <ul>
+        {% for quote in current_page.object_list %}
+        <li>{{ quote.text }} - {{ quote.author.name }}</li>
+        {% endfor %}
+    </ul>
 </div>
 
 <!-- Кнопки "Previous" и "Next" для навигации по страницам -->
@@ -40,4 +41,5 @@
         {% endif %}
     </span>
 </div>
+
 {% endblock %}
