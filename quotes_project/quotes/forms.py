@@ -47,3 +47,7 @@ class QuoteForm(forms.ModelForm):
 
 class TagSearchForm(forms.Form):
     tag_name = forms.CharField(max_length=50)
+
+
+class ScrapingForm(forms.Form):
+    url = forms.URLField(label="URL of the website to scrape")

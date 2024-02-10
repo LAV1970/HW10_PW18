@@ -8,6 +8,10 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Quote, Author, Tag
 from .forms import YourRegisterForm, AuthorForm, QuoteForm, TagSearchForm
+from django.http import HttpResponse
+from .forms import ScrapingForm
+import requests
+from bs4 import BeautifulSoup
 
 
 def top_tags(request):
@@ -141,3 +145,19 @@ def home(request):
         current_page = paginator.page(paginator.num_pages)
 
     return render(request, "home.html", {"current_page": current_page})
+
+
+def scraping_view(request):
+    if request.method == "POST":
+        form = ScrapingForm(request.POST)
+        if form.is_valid():
+            url = form.cleaned_data["url"]
+            # Perform scraping logic here using requests and BeautifulSoup
+            # Extract quotes and authors from the provided URL
+            # Save the extracted data to the database
+            # Redirect or render a response as needed
+            return HttpResponse("Scraping completed successfully!")
+    else:
+        form = ScrapingForm()
+
+    return render(request, "scraping.html", {"form": form})

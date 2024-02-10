@@ -13,6 +13,7 @@ from .views import (
     author_detail,
     quotes_by_tag,
     top_tags,
+    scraping_view,
 )
 from django.contrib.auth import views as auth_views
 
@@ -32,6 +33,7 @@ urlpatterns = [
     path("author/<int:author_id>/", author_detail, name="author_detail"),
     path("quotes_by_tag/", quotes_by_tag, name="quotes_by_tag"),
     path("top_tags/", top_tags, name="top_tags"),
+    path("scrape/", scraping_view, name="scraping_view"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
