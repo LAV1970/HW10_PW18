@@ -5,5 +5,13 @@
 {% block content %}
 <h2>Welcome, {{ user.username }}!</h2>
 <p>This is your personalized home page.</p>
-<!-- Дополнительные элементы и информация, если нужно -->
+<div class="top-tags">
+    <h2>Top Ten Tags</h2>
+    <ul>
+        <li><a href="/authors/john-doe/">John Doe</a></li>
+        <li><a href="/authors/jane-smith/">Jane Smith</a></li>
+        <li><a href="/authors/bob-jones/">Bob Jones</a></li>
+        <!-- Добавьте остальных авторов по аналогии -->
+    </ul>
+</div>
 {% endblock %}
