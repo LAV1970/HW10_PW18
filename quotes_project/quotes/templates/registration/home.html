@@ -5,6 +5,7 @@
 {% block content %}
 <h2>Welcome, {{ user.username }}!</h2>
 <p>This is your personalized home page.</p>
+
 <div class="top-tags">
     <h2>Top Ten Tags</h2>
     <ul>
@@ -13,5 +14,30 @@
         <li><a href="/authors/bob-jones/">Bob Jones</a></li>
         <!-- Добавьте остальных авторов по аналогии -->
     </ul>
+</div>
+
+<div class="quotes">
+    {% for quote in current_page.object_list %}
+    <p>{{ quote.text }} - {{ quote.author.name }}</p>
+    {% endfor %}
+</div>
+
+<!-- Кнопки "Previous" и "Next" для навигации по страницам -->
+<div class="pagination">
+    <span class="step-links">
+        {% if current_page.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ current_page.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{ current_page.number }} из {{ current_page.paginator.num_pages }}.
+        </span>
+
+        {% if current_page.has_next %}
+        <a href="?page={{ current_page.next_page_number }}">next</a>
+        <a href="?page={{ current_page.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
 </div>
 {% endblock %}

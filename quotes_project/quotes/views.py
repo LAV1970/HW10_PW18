@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Quote, Author, Tag
 from .forms import YourRegisterForm, AuthorForm, QuoteForm, TagSearchForm
 
@@ -114,3 +115,29 @@ def quotes_by_tag(request):
         quotes = Quote.objects.all()
 
     return render(request, "quotes_by_tag.html", {"form": form, "quotes": quotes})
+
+
+def home(request):
+    # Получение всех цитат
+    all_quotes = Quote.objects.all()
+
+    # Количество цитат на одной странице
+    quotes_per_page = 10
+
+    # Инициализация объекта Paginator
+    paginator = Paginator(all_quotes, quotes_per_page)
+
+    # Получение текущей страницы из параметра запроса или 1, если параметр не предоставлен
+    page = request.GET.get("page", 1)
+
+    try:
+        # Получение объекта страницы
+        current_page = paginator.page(page)
+    except PageNotAnInteger:
+        # Если номер страницы не является целым числом, получаем первую страницу
+        current_page = paginator.page(1)
+    except EmptyPage:
+        # Если номер страницы находится за пределами допустимого диапазона, получаем последнюю страницу
+        current_page = paginator.page(paginator.num_pages)
+
+    return render(request, "home.html", {"current_page": current_page})

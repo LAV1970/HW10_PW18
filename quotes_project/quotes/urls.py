@@ -1,5 +1,7 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.conf.urls.static import static
 from .views import (
     quote_list,
     SignUpView,
@@ -15,8 +17,8 @@ from .views import (
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path("", quote_list, name="quote_list"),
-    path("", quote_list, name="quote_list"),
+    path("", home, name="home"),
+    path("quotes/", quote_list, name="quote_list"),
     path("login/", auth_views.LoginView.as_view(), name="login"),
     path(
         "logout/", auth_views.LogoutView.as_view(), name="logout"
@@ -31,3 +33,5 @@ urlpatterns = [
     path("quotes_by_tag/", quotes_by_tag, name="quotes_by_tag"),
     path("top_tags/", top_tags, name="top_tags"),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
