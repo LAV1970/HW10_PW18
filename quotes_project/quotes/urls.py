@@ -16,6 +16,9 @@ from .views import (
     scraping_view,
 )
 from django.contrib.auth import views as auth_views
+from django.urls import path
+from django.contrib.auth import views as auth_views
+from .views import MyPasswordResetView, MyPasswordResetConfirmView
 
 urlpatterns = [
     path("", home, name="home"),
@@ -34,6 +37,12 @@ urlpatterns = [
     path("quotes_by_tag/", quotes_by_tag, name="quotes_by_tag"),
     path("top_tags/", top_tags, name="top_tags"),
     path("scraping/", scraping_view, name="scraping_view"),
+    path("reset-password/", MyPasswordResetView.as_view(), name="password_reset"),
+    path(
+        "reset-password/<uidb64>/<token>/",
+        MyPasswordResetConfirmView.as_view(),
+        name="password_reset_confirm",
+    ),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

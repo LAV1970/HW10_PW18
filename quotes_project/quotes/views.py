@@ -12,6 +12,7 @@ from django.http import HttpResponse
 from .forms import ScrapingForm
 import requests
 from bs4 import BeautifulSoup
+from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
 
 
 def top_tags(request):
@@ -161,3 +162,13 @@ def scraping_view(request):
         form = ScrapingForm()
 
     return render(request, "scraping.html", {"form": form})
+
+
+class MyPasswordResetView(PasswordResetView):
+    template_name = "registration/password_reset_form.html"
+    email_template_name = "registration/password_reset_email.html"
+    subject_template_name = "registration/password_reset_subject.txt"
+
+
+class MyPasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = "registration/password_reset_confirm.html"
